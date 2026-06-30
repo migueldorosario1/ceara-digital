@@ -8,13 +8,32 @@ const queuePath = path.join(repo, 'tools', 'cicero_hourly_queue.json');
 const statePath = path.join(repo, 'tools', 'cicero_hourly_state.json');
 const logPath = path.join(repo, 'logs', 'cicero_publication_audit.jsonl');
 const reportPath = path.join(repo, 'logs', 'cicero_relatorio_bloqueios.md');
-const brainPath = path.join(repo, '..', 'CEREBRO_INDEX_RIOCARTA.md');
+const brainPath = (() => {
+  for (const p of [
+    path.join(repo, '..', 'CEREBRO_INDEX_RIOCARTA.md'),
+    path.join(repo, '..', '..', '..', 'Cerebro', 'CEREBRO_INDEX_RIOCARTA.md'),
+    '/home/migueldorosario/Downloads/Antigravity Google/Cerebro/CEREBRO_INDEX_RIOCARTA.md'
+  ]) {
+    if (fs.existsSync(p)) return p;
+  }
+  return path.join(repo, '..', 'CEREBRO_INDEX_RIOCARTA.md');
+})();
 const blogDir = path.join(repo, 'src', 'content', 'blog');
 const publicDir = path.join(repo, 'public');
 const pausePath = path.join(repo, 'tools', 'cicero_publish_paused.txt');
 
 const args = new Set(process.argv.slice(2));
-const envPath = path.join(repo, '..', 'root', 'chaves_cicero.env');
+const envPath = (() => {
+  for (const p of [
+    path.join(repo, '..', 'root', 'chaves_cicero.env'),
+    path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'chaves_cicero.env'),
+    '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/chaves_cicero.env'
+  ]) {
+    if (fs.existsSync(p)) return p;
+  }
+  return path.join(repo, '..', 'root', 'chaves_cicero.env');
+})();
+const siteName = repo.includes('ceara-digital') ? 'Ceara Digital' : 'Cícero';
 const forcedBatchSize = process.env.RIOCARTA_BATCH_SIZE ? Number(process.env.RIOCARTA_BATCH_SIZE) : null;
 const forcedMaxAuditAttempts = process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS ? Number(process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS) : null;
 const forcedMaxBatchSize = process.env.RIOCARTA_MAX_BATCH_SIZE ? Number(process.env.RIOCARTA_MAX_BATCH_SIZE) : null;
@@ -31,7 +50,7 @@ let state = fs.existsSync(statePath)
 
 if (fs.existsSync(pausePath) && !auditCurrentOnly) {
   const reason = fs.readFileSync(pausePath, 'utf8').replace(/\s+/g, ' ').trim().slice(0, 240);
-  console.log(`Publicacao automatica Cícero pausada: ${reason}`);
+  console.log(`Publicacao automatica ${siteName} pausada: ${reason}`);
   process.exit(0);
 }
 
@@ -138,7 +157,33 @@ function languageCheck(article) {
   }
   return { ok: true };
 }
+function validatePadraoOuro(body) {
+  const paragraphs = body.split(/\n{2,}/)
+    .map(p => p.trim())
+    .filter(p => {
+      return p && 
+             !p.startsWith('#') && 
+             !p.startsWith('!') && 
+             !p.startsWith('-') && 
+             !p.startsWith('>') && 
+             !p.startsWith('*Fonte:') &&
+             !p.startsWith('*Fonte para revisão:');
+    });
 
+  if (paragraphs.length < 6) {
+    return { ok: false, reason: `quantidade insuficiente de paragrafos para Padrao Ouro: ${paragraphs.length} (esperado pelo menos 6)` };
+  }
+
+  for (let idx = 0; idx < 6; idx++) {
+    const p = paragraphs[idx];
+    const sentences = splitSentences(p);
+    if (sentences.length !== 2) {
+      return { ok: false, reason: `paragrafo ${idx + 1} nao contem exatamente 2 sentencas: contem ${sentences.length}` };
+    }
+  }
+
+  return { ok: true };
+}
 function orderHiddenByDiversity(files) {
   const buckets = new Map();
   const freshness = (file) => {
@@ -431,7 +476,7 @@ function writeHourlyReport(extra = {}) {
   const published = events.filter((event) => event.published);
   const notes = brainNotes();
   const lines = [
-    '# Cícero - Relatorio horario de bloqueios',
+    `# ${siteName} - Relatorio horario de bloqueios`,
     '',
     `Atualizado em: ${new Date().toISOString()}`,
     `Publicadas/auditadas com sucesso no historico: ${published.length}`,
@@ -483,7 +528,7 @@ async function applyBrainFixes(file, context = {}) {
         .resize({ width: Math.max(1200, meta.width || 1200), withoutEnlargement: false })
         .toFile(`${heroPath}.tmp`);
       fs.renameSync(`${heroPath}.tmp`, heroPath);
-      applied.push('imagem destacada ampliada dentro do silo Cícero');
+      applied.push(`imagem destacada ampliada dentro do silo ${siteName}`);
     }
   }
 
@@ -508,7 +553,7 @@ async function askModelAuditor(auditor, article) {
     timeStyle: 'short',
   }).format(now);
   const prompt = [
-    'Audite esta materia antes de publicacao no Cícero.',
+    `Audite esta materia antes de publicacao no ${siteName}.`,
     'Responda somente JSON: {"ok":true|false,"reason":"motivo objetivo","fix":"correcao objetiva ou vazio"}.',
     'A auditoria serve para ajudar a publicar melhor, nao para bloquear por medo generico.',
     'Criterios de bloqueio: contradicao interna grave, acusacao grave sem apoio no texto/fonte, data impossivel claramente demonstrada, titulo desonesto, aviso interno de rascunho.',
@@ -624,8 +669,17 @@ async function auditAndFix(file, publish) {
   if (!title || title.length < 20) warnings.push('titulo fraco ou ausente');
   if (title.length > 125) warnings.push('titulo longo');
   if (!description || description.length < 80) warnings.push('descricao curta');
-  if (!tags.includes('rio-de-janeiro') && !tags.includes('niteroi') && !tags.includes('baixada-cearense')) {
-    warnings.push('categoria territorial fraca');
+  const isCeara = repo.includes('ceara-digital');
+  if (isCeara) {
+    const tagsList = parseTags(frontmatter);
+    const hasCearaTag = tagsList.some(t => ['ceara', 'ceará', 'fortaleza', 'sobral', 'elmano-de-freitas', 'ciro-gomes', 'cariri'].includes(t.toLowerCase()));
+    if (!hasCearaTag) {
+      warnings.push('categoria territorial fraca (falta tag do Ceara)');
+    }
+  } else {
+    if (!tags.includes('rio-de-janeiro') && !tags.includes('niteroi') && !tags.includes('baixada-cearense')) {
+      warnings.push('categoria territorial fraca');
+    }
   }
   let imageSize = 'remote';
 
@@ -645,6 +699,8 @@ async function auditAndFix(file, publish) {
   const source = extractSource(nextBody);
   const language = languageCheck({ title, description, body: nextBody });
   if (!language.ok) warnings.push(language.reason);
+  const ouro = validatePadraoOuro(nextBody);
+  if (!ouro.ok) warnings.push(ouro.reason);
   const articleForAudit = {
         title,
         description,
@@ -847,19 +903,30 @@ if (commitAndPush) {
     'src/pages/rss.xml.js',
     'src/pages/tags/[tag].astro',
     ...changedArticleSet.map((file) => `src/content/blog/${file}`),
-  ];
+  ].filter(file => fs.existsSync(path.join(repo, file)));
   git(['add', ...changedFiles]);
   const staged = git(['diff', '--cached', '--name-only']);
   if (staged) {
     const publishedTitles = publishSet.map((file) => path.basename(file, '.md')).join(', ');
-    git(['commit', '-m', `Publish Cícero hourly batch (${publishSet.length})`, '-m', publishedTitles]);
+    git(['commit', '-m', `Publish ${siteName} hourly batch (${publishSet.length})`, '-m', publishedTitles]);
     if (!skipGitPush) {
       git(['push', 'origin', 'main']);
     }
     if (publishSet.length) {
+      let confirmScript = path.join(repo, '..', 'root', 'cicero_confirm_published.py');
+      for (const p of [
+        path.join(repo, '..', 'root', 'cicero_confirm_published.py'),
+        path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'cicero_confirm_published.py'),
+        '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/cicero_confirm_published.py'
+      ]) {
+        if (fs.existsSync(p)) {
+          confirmScript = p;
+          break;
+        }
+      }
       execFileSync(
         process.env.RIOCARTA_PYTHON || 'python3',
-        [path.join(repo, '..', 'root', 'cicero_confirm_published.py'), ...publishSet],
+        [confirmScript, ...publishSet],
         { cwd: repo, stdio: 'inherit' },
       );
     }
