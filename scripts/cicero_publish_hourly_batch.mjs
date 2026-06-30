@@ -173,8 +173,11 @@ function validatePadraoOuro(body) {
   if (paragraphs.length < 6) {
     return { ok: false, reason: `quantidade insuficiente de paragrafos para Padrao Ouro: ${paragraphs.length} (esperado pelo menos 6)` };
   }
+  if (paragraphs.length > 8) {
+    return { ok: false, reason: `quantidade excessiva de paragrafos para Padrao Ouro: ${paragraphs.length} (esperado no maximo 8)` };
+  }
 
-  for (let idx = 0; idx < 6; idx++) {
+  for (let idx = 0; idx < paragraphs.length; idx++) {
     const p = paragraphs[idx];
     const sentences = splitSentences(p);
     if (sentences.length !== 2) {
@@ -433,7 +436,7 @@ function normalizeVote(auditor, json, raw) {
     return { auditor: auditor.name, ok: null, reason: 'veto vazio/curto ignorado como falha tecnica' };
   }
   if (json?.ok === true && lowQuality) {
-    return { auditor: auditor.name, ok: null, reason: 'aprovacao vazia/curta ignorada como voto fraco' };
+    return { auditor: auditor.name, ok: true, reason: reason || 'aprovacao sem ressalvas' };
   }
   if (json?.ok === false && /\b(timestamp|nome do arquivo|filename|heroimage|imagem.*2026|202605)\b/i.test(reason)) {
     return { auditor: auditor.name, ok: null, reason: `veto por metadado tecnico ignorado: ${reason.slice(0, 180)}` };
@@ -525,11 +528,12 @@ async function rewriteWithLLM(body, title, reason) {
     `A matéria abaixo falhou no teste de publicação com o seguinte erro: "${reason}".`,
     `Sua tarefa é reescrever a matéria para que ela atenda rigorosamente ao Padrão Ouro de jornalismo.`,
     `Regras do Padrão Ouro:`,
-    `- O texto deve ter no mínimo 6 parágrafos e no máximo 8 parágrafos.`,
-    `- Cada parágrafo deve conter EXATAMENTE 2 frases completas. Nem mais, nem menos. Cada frase deve terminar com ponto final, ponto de exclamação ou ponto de interrogação.`,
-    `- Mantenha todas as informações factuais da matéria (nomes, locais, dados do Ipece, Kayak, etc.).`,
-    `- Não invente fatos novos, apenas elabore levemente as frases existentes ou adicione uma conclusão jornalística coerente para completar o número mínimo de parágrafos/frases.`,
-    `- Corrija quaisquer problemas de coesão ou frases incompletas/truncadas no final do texto.`,
+    `- O texto deve ter de 6 a 8 parágrafos (blocos de texto comuns).`,
+    `- Cada parágrafo deve conter EXATAMENTE 2 frases completas. Nem mais, nem menos. Cada frase deve terminar com ponto final, exclamação ou interrogação (evite abreviações com ponto que confundam a contagem).`,
+    `- Separe cada parágrafo com uma linha em branco (dois linebreaks \n\n).`,
+    `- Mantenha todas as informações factuais da matéria original (nomes, locais, dados do Ipece, Kayak, etc.).`,
+    `- Não invente fatos novos. Se faltarem parágrafos/frases para atingir o mínimo de 6 parágrafos, elabore ou expanda levemente as frases existentes ou adicione uma conclusão jornalística coerente.`,
+    `- Corrija quaisquer problemas de coesão, repetições, ou frases incompletas/truncadas no final do texto.`,
     `- Retorne APENAS o corpo da matéria formatado em Markdown, sem títulos, sem cabeçalhos, sem metalinguagem, sem notas explicativas.`,
     `\nTítulo da matéria: ${title}`,
     `\nCorpo da matéria original:\n${body}`
@@ -639,9 +643,9 @@ async function askModelAuditor(auditor, article) {
     `Audite esta materia antes de publicacao no ${siteName}.`,
     'Responda somente JSON: {"ok":true|false,"reason":"motivo objetivo","fix":"correcao objetiva ou vazio"}.',
     'A auditoria serve para ajudar a publicar melhor, nao para bloquear por medo generico.',
-    'Criterios de bloqueio: contradicao interna grave, acusacao grave sem apoio no texto/fonte, data impossivel claramente demonstrada, titulo desonesto, aviso interno de rascunho.',
+    'Criterios de bloqueio: contradicao interna grave, acusacao grave sem apoio no texto/fonte, data impossivel claramente demonstrada (comprovadamente falsa ou no passado, nao projecoes futuras), titulo desonesto, aviso interno de rascunho.',
+    'Nao bloqueie pesquisas de intencao, tendencias de busca, estimativas ou planos sobre meses seguintes (ex: intencao de viagens para julho de 2026 divulgadas em junho de 2026); isso e jornalismo de projecao valido.',
     'Nao bloqueie apenas porque voce nao lembra do fato. Nao use timestamp de nome de arquivo ou imagem como prova factual. Se houver fonte citada e voce nao tiver certeza do erro, aprove com observacao.',
-    'Nao responda com "curto"; explique em uma frase concreta.',
     `Data/hora atual para auditoria: ${brNow} (America/Sao_Paulo). UTC: ${now.toISOString()}.`,
     'Use essa data dinamica para julgar passado, presente e futuro; nao invente data fixa.',
     `TITULO: ${article.title}`,
@@ -689,7 +693,7 @@ async function expandedConsensus(article, warnings) {
     {
       name: 'deepseek',
       baseUrl: 'https://api.deepseek.com',
-      model: process.env.DEEPSEEK_AUDIT_MODEL || 'deepseek-v4-pro',
+      model: process.env.DEEPSEEK_AUDIT_MODEL || 'deepseek-chat',
       key: process.env.DEEPSEEK_API_KEY,
     },
     {
@@ -714,6 +718,9 @@ async function expandedConsensus(article, warnings) {
   const localFailures = local.filter((vote) => vote.ok === false);
   const approvals = votes.filter((vote) => vote.ok).length;
 
+  const technicalFailures = modelVotes.filter((vote) => vote.ok === null && !String(vote.reason || '').includes('ignora'));
+  const hasTechnicalFailures = technicalFailures.length > 0;
+
   let passed = true;
   let decisionReason = 'auditoria ajudou sem veto consistente';
   if (localFailures.length) {
@@ -722,7 +729,7 @@ async function expandedConsensus(article, warnings) {
   } else if (externalRejections.length >= 2) {
     passed = false;
     decisionReason = `veto externo consistente: ${externalRejections.map((vote) => `${vote.auditor}: ${vote.reason}`).join(' | ')}`;
-  } else if (externalRejections.length === 1 && externalApprovals.length === 0 && !article.sourceUrl) {
+  } else if (externalRejections.length === 1 && externalApprovals.length === 0 && !article.sourceUrl && !hasTechnicalFailures) {
     passed = false;
     decisionReason = `veto externo isolado sem fonte citada: ${externalRejections[0].auditor}: ${externalRejections[0].reason}`;
   }

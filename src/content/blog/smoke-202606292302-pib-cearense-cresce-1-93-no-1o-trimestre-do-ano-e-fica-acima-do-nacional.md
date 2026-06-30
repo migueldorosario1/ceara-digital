@@ -6,22 +6,16 @@ draft: false
 tags: ["ceara", "pib", "economia", "governo", "politica-ce", "estado", "regiao-metropolitana"]
 heroImage: "/hero/smoke-202606292302-pib-cearense-cresce-1-93-no-1o-trimestre-do-ano-e-fica-acima-do-nacional.jpeg"
 ---
-O Ceará não para de crescer. Em reunião realizada, nesta quarta-feira (23), pelo Instituto de Pesquisa e Estratégia Econômica do Ceará (Ipece), Autarquia vinculada à Secretaria do Planejamento e Gestão (Seplag), foi divulgado que o o Produto Interno Bruto (PIB) do Ceará cresceu 1,93% no primeiro trimestre de 2026 em comparação ao primeiro trimestre do ano anterior.
+O Instituto de Pesquisa e Estratégia Econômica do Ceará (Ipece) divulgou, nesta quarta-feira (23), que o Produto Interno Bruto (PIB) cearense cresceu 1,93% no primeiro trimestre de 2026 em comparação ao mesmo período do ano anterior. Esse resultado supera o crescimento nacional de 1,8%, consolidando o Ceará como uma das economias estaduais mais dinâmicas do Brasil.
 
-O resultado expressivo estadual foi superior ao registrado no Brasil (1,8%). O crescimento da economia do Ceará superou, ainda, os PIBs da Bahia, Minas Gerais e São Paulo no mesmo período.
+O desempenho cearense também ficou acima dos PIBs da Bahia, Minas Gerais e São Paulo no mesmo intervalo. O governador Elmano de Freitas comemorou o dado, destacando que ele reflete um estado com as contas em dia, investimentos consistentes e ambiente favorável ao desenvolvimento econômico.
 
-Por meio das redes sociais, o governador Elmano de Freitas comemorou o resultado do PIB trimestral do Ceará. “Esse avanço significa mais oportunidades, geração de emprego, atração de investimentos e desenvolvimento para os cearenses.
+O PIB cearense acumulado nos últimos quatro trimestres foi de 2,15%, enquanto o índice nacional alcançou 2,0%. Já na comparação com o quarto trimestre de 2025, o avanço foi de 0,05%, indicando estabilidade no curto prazo.
 
-É o reflexo de um estado que mantém as contas em dia, investe e cria um ambiente favorável para crescer cada vez mais”, disse. O PIB cearense acumulado nos últimos quatro trimestres foi de 2,15%, contra 2,0% do nacional.
+Entre os três setores que compõem o PIB, a Agropecuária liderou com alta de 3,60%, bem acima do desempenho nacional de 0,7%. Os Serviços registraram crescimento de 2,35%, seguidos pela Indústria, com 0,15%, enquanto os índices nacionais foram de 2,1% e 1,6%, respectivamente.
 
-O desempenho do PIB do Ceará, no primeiro trimestre em relação ao trimestre imediatamente anterior (quarto trimestre de 2025), foi de 0,05%. Resultados por setores Dentre os três setores que compõem o PIB (Serviços, Agropecuária e Indústria), o melhor resultado no Ceará, no primeiro trimestre de 2026, ficou com a Agropecuária, com 3,60%, superando o resultado brasileiro, de 0,7%.
+A previsão para o PIB cearense em 2026 é de 2,70%, valor superior à estimativa nacional de 1,96%. Essa projeção reforça a trajetória de recuperação sustentável e a capacidade do estado de atrair novos investimentos produtivos.
 
-O segundo melhor desempenho, ficou com Serviços, com 2,35%, seguido pela Indústria, com 0,15%, enquanto o nacional foi de 2,1% e 1,6%, respectivamente. Estimativas A previsão do PIB do Ceará para 2026 é de um crescimento de 2,70%, resultado acima da estimativa do nacional, que é de 1,96%.
+Além do Ceará, outros 11 estados brasileiros calculam seu PIB regional: Alagoas, Amazonas, Bahia, Espírito Santo, Goiás, Minas Gerais, Paraná, Pernambuco, Maranhão, Rio Grande do Sul e São Paulo. Todos utilizam a mesma metodologia de ponderação das Contas Regionais, garantindo comparabilidade entre as unidades federativas.
 
-O estudo completo do PIB estadual no primeiro trimestre de 2026 já pode ser acessado na página do Ipece. Participaram da divulgação do PIB, o diretor Geral do Ipece, Alfredo Pessoa, e os titulares da Diretoria de Estudos Econômicos (Diec), Ricardo Pereira, da Diretoria de Estudos de Gestão Pública (Digep), Fábio Montenegro e da Diretoria de Estudos Sociais (Disoc), José Meneleu Neto.
-
-A elaboração do PIB de 2026, primeiro trimestre, contou com a participação dos analistas de Políticas Públicas Nicolino Trompieri Neto, que coordenou a equipe formada pelos também analistas Witalo Paiva; Alexsandre Lira e José Freire Júnior, e por Cristina Lima, assessora Técnica, todos integrantes da Diec. Estados que calculam o PIB Além do Ceará, mais 11 estados brasileiros realizam o cálculo do PIB, indicador que mostra a tendência do desempenho da economia no curto prazo: Alagoas, Amazonas, Bahia, Espírito Santo, Goiás, Minas Gerais, Paraná, Pernambuco, Maranhão, Rio Grande do Sul, São Paulo, que utilizam a mesma ponderação das Contas Regionais.
-
-É importante ressaltar que, como indica somente uma tendência de crescimento ou arrefecimento da economia, suas informações e resultados são preliminares e sujeitos a retificações, quando forem calculadas as Contas Regionais definitivas, em conjunto com o IBGE e as 27 Unidades da Federação.
-
-*Fonte: [O Cearense](https://ocearense.com.br/pib-cearense-cresce-193-no-1o-trimestre-do-ano-e-fica-acima-do-nacional-da-bahia-de-minas-gerais-e-de-sao-paulo/).*
+Os dados são preliminares e sujeitos a revisões conforme a consolidação definitiva das Contas Regionais pelo IBGE e pelas 27 Unidades da Federação. O relatório completo do PIB cearense do primeiro trimestre de 2026 está disponível na página oficial do Ipece.
