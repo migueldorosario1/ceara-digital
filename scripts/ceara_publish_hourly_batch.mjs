@@ -593,11 +593,18 @@ async function applyBrainFixes(file, context = {}) {
 
   if (shouldRewrite) {
     const reasonMsg = ouro.reason || context.reason;
+    const sourceObj = extractSource(cleanedBody);
     console.log(`[Padrão Ouro] Desvio estrutural detectado em ${file}: ${reasonMsg}`);
     console.log(`Aplicando reescrita estrutural via LLM (Qwen)...`);
     const rewritten = await rewriteWithLLM(cleanedBody, getField(frontmatter, 'title'), reasonMsg);
     if (rewritten && rewritten !== cleanedBody) {
       cleanedBody = cleanBody(rewritten, getField(frontmatter, 'title'));
+      if (sourceObj.name && sourceObj.url) {
+        const sourceLine = `*Fonte: [${sourceObj.name}](${sourceObj.url}).*`;
+        if (!cleanedBody.includes(sourceLine)) {
+          cleanedBody = `${cleanedBody.trim()}\n\n${sourceLine}\n`;
+        }
+      }
       applied.push('reescrita estrutural via LLM (Qwen) para conformidade Padrão Ouro');
     }
   }
