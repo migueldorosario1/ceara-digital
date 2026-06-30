@@ -578,15 +578,20 @@ async function applyBrainFixes(file, context = {}) {
     .replace(/\ncontinua após as imagens\n/gi, '\n')
     .replace(/\nVeja o vídeo abaixo[^\n]*\n/gi, '\n');
 
-  if (context.reason && (
+  const ouro = validatePadraoOuro(cleanedBody);
+  const shouldRewrite = !ouro.ok || (context.reason && (
     context.reason.includes('quantidade insuficiente de paragrafos') ||
     context.reason.includes('não contem exatamente 2 sentencas') ||
     context.reason.includes('sentença') ||
     context.reason.includes('parágrafo') ||
     context.reason.includes('Padrao Ouro')
-  )) {
-    console.log(`Aplicando reescrita LLM para corrigir estrutura da matéria: ${file}`);
-    const rewritten = await rewriteWithLLM(cleanedBody, getField(frontmatter, 'title'), context.reason);
+  ));
+
+  if (shouldRewrite) {
+    const reasonMsg = ouro.reason || context.reason;
+    console.log(`[Padrão Ouro] Desvio estrutural detectado em ${file}: ${reasonMsg}`);
+    console.log(`Aplicando reescrita estrutural via LLM (Qwen)...`);
+    const rewritten = await rewriteWithLLM(cleanedBody, getField(frontmatter, 'title'), reasonMsg);
     if (rewritten && rewritten !== cleanedBody) {
       cleanedBody = cleanBody(rewritten, getField(frontmatter, 'title'));
       applied.push('reescrita estrutural via LLM (Qwen) para conformidade Padrão Ouro');
