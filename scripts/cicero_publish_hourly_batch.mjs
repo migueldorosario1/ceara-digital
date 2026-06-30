@@ -295,32 +295,44 @@ function splitSentences(paragraph) {
 }
 
 function shortParagraphs(body) {
-  return body
-    .split(/\n{2,}/)
-    .map((block) => {
-      const trimmed = block.trim();
-      if (!trimmed) return '';
-      if (
-        trimmed.startsWith('*Fonte:') ||
-        trimmed.startsWith('#') ||
-        trimmed.startsWith('>') ||
-        trimmed.startsWith('- ') ||
-        trimmed.includes('<') ||
-        trimmed.includes('```')
-      ) {
-        return trimmed;
+  const blocks = body.split(/\n{2,}/).map(b => b.trim()).filter(Boolean);
+  const resultBlocks = [];
+  let currentNarrativeSentences = [];
+
+  function flushNarrative() {
+    if (currentNarrativeSentences.length > 0) {
+      for (let i = 0; i < currentNarrativeSentences.length; i += 2) {
+        const pair = currentNarrativeSentences.slice(i, i + 2);
+        resultBlocks.push(pair.join(' '));
       }
-      const lines = trimmed.split(/\n+/).map((line) => line.trim()).filter(Boolean);
-      const paragraphs = [];
+      currentNarrativeSentences = [];
+    }
+  }
+
+  for (const block of blocks) {
+    const isSpecial = 
+      block.startsWith('*Fonte:') ||
+      block.startsWith('*Fonte para revisão:') ||
+      block.startsWith('#') ||
+      block.startsWith('>') ||
+      block.startsWith('- ') ||
+      block.includes('<') ||
+      block.includes('```') ||
+      block.toLowerCase() === 'advertisement';
+
+    if (isSpecial) {
+      flushNarrative();
+      resultBlocks.push(block);
+    } else {
+      const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
       for (const line of lines) {
         const sentences = splitSentences(line);
-        for (let index = 0; index < sentences.length; index += 2) {
-          paragraphs.push(sentences.slice(index, index + 2).join(' '));
-        }
+        currentNarrativeSentences.push(...sentences);
       }
-      return paragraphs.join('\n\n');
-    })
-    .join('\n\n');
+    }
+  }
+  flushNarrative();
+  return resultBlocks.join('\n\n');
 }
 
 function normalizeComparable(text) {
