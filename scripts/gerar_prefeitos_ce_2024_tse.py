@@ -25,7 +25,7 @@ from typing import Any
 
 
 TSE_ZIP_URL = "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2024.zip"
-CSV_NAME = "votacao_candidato_munzona_2024_CE.zip"
+CSV_NAME = "votacao_candidato_munzona_2024_CE.csv"
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 OUTPUT_CSV = PROJECT_ROOT / "src" / "data" / "prefeitos_eleitos_ce_2024.csv"

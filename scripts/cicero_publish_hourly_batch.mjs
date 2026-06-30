@@ -33,7 +33,7 @@ const envPath = (() => {
   }
   return path.join(repo, '..', 'root', 'chaves_cicero.env');
 })();
-const siteName = repo.includes('ceara-digital') ? 'Ceara Digital' : 'Cícero';
+const siteName = (repo.includes('ceara-digital') || repo.includes('cicero')) ? 'Ceara Digital' : 'Cícero';
 const forcedBatchSize = process.env.RIOCARTA_BATCH_SIZE ? Number(process.env.RIOCARTA_BATCH_SIZE) : null;
 const forcedMaxAuditAttempts = process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS ? Number(process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS) : null;
 const forcedMaxBatchSize = process.env.RIOCARTA_MAX_BATCH_SIZE ? Number(process.env.RIOCARTA_MAX_BATCH_SIZE) : null;
@@ -759,7 +759,7 @@ async function auditAndFix(file, publish) {
   if (!title || title.length < 20) warnings.push('titulo fraco ou ausente');
   if (title.length > 125) warnings.push('titulo longo');
   if (!description || description.length < 80) warnings.push('descricao curta');
-  const isCeara = repo.includes('ceara-digital');
+  const isCeara = repo.includes('ceara-digital') || repo.includes('cicero');
   if (isCeara) {
     const tagsList = parseTags(frontmatter);
     const hasCearaTag = tagsList.some(t => ['ceara', 'ceará', 'fortaleza', 'sobral', 'elmano-de-freitas', 'ciro-gomes', 'cariri'].includes(t.toLowerCase()));

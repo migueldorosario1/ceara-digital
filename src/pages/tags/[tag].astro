@@ -91,8 +91,8 @@ const sortedPosts = sortPostsWithSticky(posts);
 // Fancy mapping
 const taxonomyMeta = new Map([
 	...rioZones.flatMap((group) => [
-		[group.slug, { title: 'Rio Capital', subtitle: group.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }],
-		...group.items.map((item) => [item.slug, { title: group.label, subtitle: item.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }]),
+		[group.slug, { title: 'Fortaleza', subtitle: group.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }],
+		...group.items.map((item) => [item.slug, { title: 'Fortaleza ' + group.label, subtitle: item.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }]),
 	]),
 	...ceRegions.flatMap((group) => [
 		[group.slug, { title: 'Estado do Ceará', subtitle: group.label, icon: '📍', color: 'linear-gradient(135deg, #2c3e50, #3498db)' }],
@@ -102,22 +102,19 @@ const taxonomyMeta = new Map([
 ]);
 
 const regionMap = {
-	'rio-de-janeiro': { title: 'Região Metropolitana', subtitle: 'Ceará', icon: '🏙️', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
-	'niteroi': { title: 'Região Metropolitana', subtitle: 'Niterói', icon: '🌉', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
-	'sao-goncalo': { title: 'Região Metropolitana', subtitle: 'São Gonçalo', icon: '🏭', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
-	'baixada': { title: 'Região Metropolitana', subtitle: 'Baixada Cearense', icon: '🚆', color: 'linear-gradient(135deg, #f7971e, #ffd200)' },
-	'cabo-frio': { title: 'Região dos Lagos', subtitle: 'Cabo Frio', icon: '🏖️', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
-	'buzios': { title: 'Região dos Lagos', subtitle: 'Búzios', icon: '🍹', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
-	'arraial-do-cabo': { title: 'Região dos Lagos', subtitle: 'Arraial do Cabo', icon: '🤿', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
-	'campos': { title: 'Norte Cearense', subtitle: 'Campos dos Goytacazes', icon: '🌾', color: 'linear-gradient(135deg, #56ab2f, #a8e063)' },
-	'macae': { title: 'Norte Cearense', subtitle: 'Macaé', icon: '🛢️', color: 'linear-gradient(135deg, #56ab2f, #a8e063)' },
-	'volta-redonda': { title: 'Sul Cearense', subtitle: 'Volta Redonda', icon: '⚙️', color: 'linear-gradient(135deg, #cb2d3e, #ef473a)' },
-	'resende': { title: 'Sul Cearense', subtitle: 'Resende', icon: '⛰️', color: 'linear-gradient(135deg, #cb2d3e, #ef473a)' },
-	'petropolis': { title: 'Região Serrana', subtitle: 'Petrópolis', icon: '👑', color: 'linear-gradient(135deg, #11998e, #38ef7d)' },
-	'teresopolis': { title: 'Região Serrana', subtitle: 'Teresópolis', icon: '🏔️', color: 'linear-gradient(135deg, #11998e, #38ef7d)' },
-	'nova-friburgo': { title: 'Região Serrana', subtitle: 'Nova Friburgo', icon: '❄️', color: 'linear-gradient(135deg, #11998e, #38ef7d)' },
-	'angra-dos-reis': { title: 'Costa Verde', subtitle: 'Angra dos Reis', icon: '🛥️', color: 'linear-gradient(135deg, #00b4db, #0083b0)' },
-	'paraty': { title: 'Costa Verde', subtitle: 'Paraty', icon: '🏘️', color: 'linear-gradient(135deg, #00b4db, #0083b0)' },
+	'fortaleza': { title: 'Região Metropolitana', subtitle: 'Fortaleza', icon: '🏙️', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
+	'caucaia': { title: 'Região Metropolitana', subtitle: 'Caucaia', icon: '🏙️', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
+	'maracanau': { title: 'Região Metropolitana', subtitle: 'Maracanaú', icon: '🏙️', color: 'linear-gradient(135deg, #0052D4, #4364F7)' },
+	'juazeiro-do-norte': { title: 'Região do Cariri', subtitle: 'Juazeiro do Norte', icon: '🏖️', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
+	'crato': { title: 'Região do Cariri', subtitle: 'Crato', icon: '🏖️', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
+	'barbalha': { title: 'Região do Cariri', subtitle: 'Barbalha', icon: '🏖️', color: 'linear-gradient(135deg, #1cb5e0, #000046)' },
+	'sobral': { title: 'Zona Norte', subtitle: 'Sobral', icon: '👑', color: 'linear-gradient(135deg, #11998e, #38ef7d)' },
+	'itapipoca': { title: 'Zona Norte', subtitle: 'Itapipoca', icon: '👑', color: 'linear-gradient(135deg, #11998e, #38ef7d)' },
+	'quixada': { title: 'Sertão Central', subtitle: 'Quixadá', icon: '⚙️', color: 'linear-gradient(135deg, #cb2d3e, #ef473a)' },
+	'quixeramobim': { title: 'Sertão Central', subtitle: 'Quixeramobim', icon: '⚙️', color: 'linear-gradient(135deg, #cb2d3e, #ef473a)' },
+	'aracati': { title: 'Litoral Leste', subtitle: 'Aracati', icon: '🏖️', color: 'linear-gradient(135deg, #00b4db, #0083b0)' },
+	'russas': { title: 'Vale do Jaguaribe', subtitle: 'Russas', icon: '🚜', color: 'linear-gradient(135deg, #56ab2f, #a8e063)' },
+	'limoeiro-do-norte': { title: 'Vale do Jaguaribe', subtitle: 'Limoeiro do Norte', icon: '🚜', color: 'linear-gradient(135deg, #56ab2f, #a8e063)' },
 	'nacional': { title: 'Brasil', subtitle: 'Nacional', icon: '🇧🇷', color: 'linear-gradient(135deg, #009c3b, #ffdf00)' },
 	'geopolitica': { title: 'Mundo', subtitle: 'Internacional', icon: '🌍', color: 'linear-gradient(135deg, #2c3e50, #3498db)' },
 	'eleicoes-2026': { title: 'Política', subtitle: 'Eleições 2026', icon: '🗳️', color: 'linear-gradient(135deg, #141e30, #d32f2f)' },

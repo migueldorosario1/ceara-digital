@@ -5,14 +5,14 @@
   "total": 1,
   "senadores": [
     {
-      "nome": "Romário",
-      "slug": "romario",
-      "senador": "Romário de Souza Faria",
-      "partido": "PL",
-      "numero": "222",
-      "votos": 2384331,
-      "totalVotosEstado": 6595239,
-      "percentualEstado": 36.1523,
+      "nome": "Camilo",
+      "slug": "camilo",
+      "senador": "Camilo Sobreira de Santana",
+      "partido": "PT",
+      "numero": "131",
+      "votos": 3389513,
+      "totalVotosEstado": 4856028,
+      "percentualEstado": 69.8001,
       "situacao": "ELEITO"
     }
   ]
