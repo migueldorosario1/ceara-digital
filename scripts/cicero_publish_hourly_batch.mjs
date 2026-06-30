@@ -390,6 +390,7 @@ function cleanBody(body, title = '') {
   const cleaned = stripLeadingRepeatedTitle(body, title)
     .replace(/^> Rascunho técnico de smoke\. Revisar edição, categoria e imagem antes de publicar\.\n\n/m, '')
     .replace(/^Compartilhe:\s*$/gim, '')
+    .replace(/^(advertisement|publicidade|patrocinado|leia também|leia mais)\s*$/gim, '')
     .trim();
   return `${shortParagraphs(normalizeSourceCredits(cleaned)).trimEnd()}\n`;
 }
