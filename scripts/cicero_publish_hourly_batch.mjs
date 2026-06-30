@@ -516,6 +516,55 @@ function writeHourlyReport(extra = {}) {
   fs.writeFileSync(reportPath, `${lines.join('\n')}\n`);
 }
 
+async function rewriteWithLLM(body, title, reason) {
+  const apiKey = process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY;
+  if (!apiKey) return body;
+
+  const prompt = [
+    `Você é um editor sênior de jornalismo do site Ceará Digital.`,
+    `A matéria abaixo falhou no teste de publicação com o seguinte erro: "${reason}".`,
+    `Sua tarefa é reescrever a matéria para que ela atenda rigorosamente ao Padrão Ouro de jornalismo.`,
+    `Regras do Padrão Ouro:`,
+    `- O texto deve ter no mínimo 6 parágrafos e no máximo 8 parágrafos.`,
+    `- Cada parágrafo deve conter EXATAMENTE 2 frases completas. Nem mais, nem menos. Cada frase deve terminar com ponto final, ponto de exclamação ou ponto de interrogação.`,
+    `- Mantenha todas as informações factuais da matéria (nomes, locais, dados do Ipece, Kayak, etc.).`,
+    `- Não invente fatos novos, apenas elabore levemente as frases existentes ou adicione uma conclusão jornalística coerente para completar o número mínimo de parágrafos/frases.`,
+    `- Corrija quaisquer problemas de coesão ou frases incompletas/truncadas no final do texto.`,
+    `- Retorne APENAS o corpo da matéria formatado em Markdown, sem títulos, sem cabeçalhos, sem metalinguagem, sem notas explicativas.`,
+    `\nTítulo da matéria: ${title}`,
+    `\nCorpo da matéria original:\n${body}`
+  ].join('\n\n');
+
+  try {
+    const response = await fetch('https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'qwen-plus',
+        messages: [
+          { role: 'user', content: prompt }
+        ],
+        temperature: 0.1
+      })
+    });
+    if (!response.ok) {
+      console.error(`Erro na API Qwen: ${response.status} ${response.statusText}`);
+      return body;
+    }
+    const data = await response.json();
+    const result = data.choices?.[0]?.message?.content?.trim();
+    if (result) {
+      return result;
+    }
+  } catch (err) {
+    console.error(`Erro ao chamar Qwen para reescrita: ${err.message}`);
+  }
+  return body;
+}
+
 async function applyBrainFixes(file, context = {}) {
   const fullPath = path.join(blogDir, file);
   let text = fs.readFileSync(fullPath, 'utf8');
@@ -525,9 +574,25 @@ async function applyBrainFixes(file, context = {}) {
   const heroPath = (!heroImage || isRemoteHero) ? null : path.join(publicDir, heroImage.replace(/^\//, ''));
   const applied = [];
 
-  const cleanedBody = cleanBody(body, getField(frontmatter, 'title'))
+  let cleanedBody = cleanBody(body, getField(frontmatter, 'title'))
     .replace(/\ncontinua após as imagens\n/gi, '\n')
     .replace(/\nVeja o vídeo abaixo[^\n]*\n/gi, '\n');
+
+  if (context.reason && (
+    context.reason.includes('quantidade insuficiente de paragrafos') ||
+    context.reason.includes('não contem exatamente 2 sentencas') ||
+    context.reason.includes('sentença') ||
+    context.reason.includes('parágrafo') ||
+    context.reason.includes('Padrao Ouro')
+  )) {
+    console.log(`Aplicando reescrita LLM para corrigir estrutura da matéria: ${file}`);
+    const rewritten = await rewriteWithLLM(cleanedBody, getField(frontmatter, 'title'), context.reason);
+    if (rewritten && rewritten !== cleanedBody) {
+      cleanedBody = cleanBody(rewritten, getField(frontmatter, 'title'));
+      applied.push('reescrita estrutural via LLM (Qwen) para conformidade Padrão Ouro');
+    }
+  }
+
   if (cleanedBody !== body) {
     text = `---\n${frontmatter}\n---\n${cleanedBody}`;
     fs.writeFileSync(fullPath, text);
