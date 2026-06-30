@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import HeaderCidade from '../../components/HeaderCidade.astro';
-import { rioZones, ceRegions, topicTags } from '../../data/ceTaxonomy';
+import { cearaZones, ceRegions, topicTags } from '../../data/ceTaxonomy';
 import { sortPostsWithSticky } from '../../utils/stickyPosts';
 import vereadoresRj from '../../data/vereadores_ce.json';
 import parlamentaresRj from '../../data/parlamentares_ce.json';
@@ -52,7 +52,7 @@ const cidadeVereadoresMap = new Map(cidadesComVereadores.map((c) => [c.cidadeSlu
 const prefeitosEleitos = (prefeitosEleitosRj.prefeitos ?? []) as Prefeito[];
 const prefeitosMap = new Map(prefeitosEleitos.map((prefeito) => [prefeito.municipioSlug, prefeito]));
 const deputadosEstaduaisEleitos = (deputadosEstaduaisEleitosRj.deputados ?? []) as DeputadoEstadualEleito[];
-const deputadosFederaisEleitos = (deputadosFederaisEleitosRj.deputadosFederais ?? []) as DeputadoFederalEleito[];
+const deputadosFederaisEleitos = (deputadosFederaisEleitosRj.deputados ?? []) as DeputadoFederalEleito[];
 const senadoresEleitos = (senadoresEleitosRj.senadores ?? []) as SenadorEleito[];
 const deputadosFederais = (parlamentaresRj.deputadosFederais ?? []) as Parlamentar[];
 const senadores = (parlamentaresRj.senadores ?? []) as Parlamentar[];
@@ -90,7 +90,7 @@ const sortedPosts = sortPostsWithSticky(posts);
 
 // Fancy mapping
 const taxonomyMeta = new Map([
-	...rioZones.flatMap((group) => [
+	...cearaZones.flatMap((group) => [
 		[group.slug, { title: 'Fortaleza', subtitle: group.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }],
 		...group.items.map((item) => [item.slug, { title: 'Fortaleza ' + group.label, subtitle: item.label, icon: '📍', color: 'linear-gradient(135deg, #0052D4, #4364F7)' }]),
 	]),

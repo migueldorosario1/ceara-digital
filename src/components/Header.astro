@@ -3,7 +3,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import logoImg from '../assets/logo-transparent.png';
 import { Image } from 'astro:assets';
-import { rioZones, ceRegions } from '../data/ceTaxonomy';
+import { cearaZones, ceRegions } from '../data/ceTaxonomy';
 import vereadoresRj from '../data/vereadores_ce.json';
 import parlamentaresRj from '../data/parlamentares_ce.json';
 import deputadosEstaduaisEleitosRj from '../data/deputados_estaduais_eleitos_ce_2022.json';
@@ -109,7 +109,7 @@ const senadoresEmExercicio = (parlamentaresRj.senadores ?? []) as Parlamentar[];
 							<div class="dropdown-submenu">
 								<span class="submenu-title">Fortaleza: zonas e bairros <span>▶</span></span>
 								<div class="submenu-content submenu-content-wide">
-									{rioZones.map((zone) => (
+									{cearaZones.map((zone) => (
 										<div class="submenu-section">
 											<a href={`/tags/${zone.slug}`} class="submenu-section-title">{zone.label}</a>
 											{zone.items.map((item) => <a href={`/tags/${item.slug}`}>{item.label}</a>)}

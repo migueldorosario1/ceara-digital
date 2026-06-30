@@ -9,7 +9,7 @@ export type TaxonomyGroup = {
 	items: TaxonomyLink[];
 };
 
-export const rioZones: TaxonomyGroup[] = [
+export const cearaZones: TaxonomyGroup[] = [
 	{
 		label: 'Centro',
 		slug: 'fortaleza-centro',
@@ -160,8 +160,8 @@ export const topicTags: TaxonomyLink[] = [
 	{ label: 'Eleições 2026', slug: 'eleicoes-2026' },
 ];
 
-export const allRjTagSlugs = [
-	...rioZones.flatMap((group) => [group.slug, ...group.items.map((item) => item.slug)]),
+export const allCeTagSlugs = [
+	...cearaZones.flatMap((group) => [group.slug, ...group.items.map((item) => item.slug)]),
 	...ceRegions.flatMap((group) => [group.slug, ...group.items.map((item) => item.slug)]),
 	...topicTags.map((item) => item.slug),
 ];

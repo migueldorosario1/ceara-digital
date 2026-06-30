@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLOG_DIR = ROOT / "src" / "content" / "blog"
 LOG_DIR = ROOT / "logs"
-LOG_PATH = LOG_DIR / "cicero_zelador_destaques.log"
+LOG_PATH = LOG_DIR / "ceara_zelador_destaques.log"
 
 
 def parse_iso(value):

@@ -4,42 +4,42 @@ import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
 
 const repo = process.cwd();
-const queuePath = path.join(repo, 'tools', 'cicero_hourly_queue.json');
-const statePath = path.join(repo, 'tools', 'cicero_hourly_state.json');
-const logPath = path.join(repo, 'logs', 'cicero_publication_audit.jsonl');
-const reportPath = path.join(repo, 'logs', 'cicero_relatorio_bloqueios.md');
+const queuePath = path.join(repo, 'tools', 'ceara_hourly_queue.json');
+const statePath = path.join(repo, 'tools', 'ceara_hourly_state.json');
+const logPath = path.join(repo, 'logs', 'ceara_publication_audit.jsonl');
+const reportPath = path.join(repo, 'logs', 'ceara_relatorio_bloqueios.md');
 const brainPath = (() => {
   for (const p of [
-    path.join(repo, '..', 'CEREBRO_INDEX_RIOCARTA.md'),
-    path.join(repo, '..', '..', '..', 'Cerebro', 'CEREBRO_INDEX_RIOCARTA.md'),
-    '/home/migueldorosario/Downloads/Antigravity Google/Cerebro/CEREBRO_INDEX_RIOCARTA.md'
+    path.join(repo, '..', 'CEREBRO_INDEX_CICERO.md'),
+    path.join(repo, '..', '..', '..', 'Cicero Agentes', 'CEREBRO_INDEX_CICERO.md'),
+    '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/CEREBRO_INDEX_CICERO.md'
   ]) {
     if (fs.existsSync(p)) return p;
   }
-  return path.join(repo, '..', 'CEREBRO_INDEX_RIOCARTA.md');
+  return path.join(repo, '..', 'CEREBRO_INDEX_CICERO.md');
 })();
 const blogDir = path.join(repo, 'src', 'content', 'blog');
 const publicDir = path.join(repo, 'public');
-const pausePath = path.join(repo, 'tools', 'cicero_publish_paused.txt');
+const pausePath = path.join(repo, 'tools', 'ceara_publish_paused.txt');
 
 const args = new Set(process.argv.slice(2));
 const envPath = (() => {
   for (const p of [
-    path.join(repo, '..', 'root', 'chaves_cicero.env'),
-    path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'chaves_cicero.env'),
-    '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/chaves_cicero.env'
+    path.join(repo, '..', 'root', 'chaves_ceara.env'),
+    path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'chaves_ceara.env'),
+    '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/chaves_ceara.env'
   ]) {
     if (fs.existsSync(p)) return p;
   }
-  return path.join(repo, '..', 'root', 'chaves_cicero.env');
+  return path.join(repo, '..', 'root', 'chaves_ceara.env');
 })();
 const siteName = (repo.includes('ceara-digital') || repo.includes('cicero')) ? 'Ceara Digital' : 'Cícero';
-const forcedBatchSize = process.env.RIOCARTA_BATCH_SIZE ? Number(process.env.RIOCARTA_BATCH_SIZE) : null;
-const forcedMaxAuditAttempts = process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS ? Number(process.env.RIOCARTA_MAX_AUDIT_ATTEMPTS) : null;
-const forcedMaxBatchSize = process.env.RIOCARTA_MAX_BATCH_SIZE ? Number(process.env.RIOCARTA_MAX_BATCH_SIZE) : null;
+const forcedBatchSize = process.env.CEARA_BATCH_SIZE ? Number(process.env.CEARA_BATCH_SIZE) : null;
+const forcedMaxAuditAttempts = process.env.CEARA_MAX_AUDIT_ATTEMPTS ? Number(process.env.CEARA_MAX_AUDIT_ATTEMPTS) : null;
+const forcedMaxBatchSize = process.env.CEARA_MAX_BATCH_SIZE ? Number(process.env.CEARA_MAX_BATCH_SIZE) : null;
 const defaultBatchSize = 10;
 const auditCurrentOnly = args.has('--audit-current');
-const reAuditVisible = auditCurrentOnly || args.has('--reaudit-visible') || process.env.RIOCARTA_REAUDIT_VISIBLE === '1';
+const reAuditVisible = auditCurrentOnly || args.has('--reaudit-visible') || process.env.CEARA_REAUDIT_VISIBLE === '1';
 const commitAndPush = args.has('--commit') && !auditCurrentOnly;
 const skipGitPush = args.has('--no-push');
 const deployVercel = args.has('--vercel-deploy');
@@ -977,11 +977,11 @@ if (commitAndPush) {
     })
     .filter(Boolean);
   const changedFiles = [
-    'tools/cicero_hourly_queue.json',
-    'tools/cicero_hourly_state.json',
+    'tools/ceara_hourly_queue.json',
+    'tools/ceara_hourly_state.json',
     'package.json',
-    'scripts/cicero_hourly_cron.sh',
-    'scripts/cicero_publish_hourly_batch.mjs',
+    'scripts/ceara_hourly_cron.sh',
+    'scripts/ceara_publish_hourly_batch.mjs',
     'src/content.config.ts',
     'src/components/Interlinks.astro',
     'src/pages/blog/[...slug].astro',
@@ -1003,11 +1003,11 @@ if (commitAndPush) {
       git(['push', 'origin', 'main']);
     }
     if (publishSet.length) {
-      let confirmScript = path.join(repo, '..', 'root', 'cicero_confirm_published.py');
+      let confirmScript = path.join(repo, '..', 'root', 'ceara_confirm_published.py');
       for (const p of [
-        path.join(repo, '..', 'root', 'cicero_confirm_published.py'),
-        path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'cicero_confirm_published.py'),
-        '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/cicero_confirm_published.py'
+        path.join(repo, '..', 'root', 'ceara_confirm_published.py'),
+        path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'ceara_confirm_published.py'),
+        '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/ceara_confirm_published.py'
       ]) {
         if (fs.existsSync(p)) {
           confirmScript = p;
@@ -1015,7 +1015,7 @@ if (commitAndPush) {
         }
       }
       execFileSync(
-        process.env.RIOCARTA_PYTHON || 'python3',
+        process.env.CEARA_PYTHON || 'python3',
         [confirmScript, ...publishSet],
         { cwd: repo, stdio: 'inherit' },
       );

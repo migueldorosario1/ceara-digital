@@ -10,8 +10,8 @@
     "build": "astro build",
     "hero:compress:dry": "node scripts/comprimir_hero.mjs --dry-run",
     "hero:compress": "node scripts/comprimir_hero.mjs --apply",
-    "cicero:publish-hourly": "node scripts/cicero_publish_hourly_batch.mjs --commit",
-    "cicero:audit-current": "node scripts/cicero_publish_hourly_batch.mjs --audit-current",
+    "ceara:publish-hourly": "node scripts/ceara_publish_hourly_batch.mjs --commit",
+    "ceara:audit-current": "node scripts/ceara_publish_hourly_batch.mjs --audit-current",
     "preview": "astro preview",
     "astro": "astro"
   },
