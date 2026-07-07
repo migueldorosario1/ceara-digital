@@ -103,9 +103,11 @@ const displayTitle = `Arquivo: ${monthName.charAt(0).toUpperCase() + monthName.s
 					posts.map((post) => (
 						<li>
 							<a href={`/blog/${post.id}/`}>
-								{post.data.heroImage && (
-									<img width="720" height="360" src={post.data.heroImage} alt="" loading="lazy" />
-								)}
+								{post.data.heroImage ? (
+										<img width="720" height="360" src={post.data.heroImage} onerror="this.onerror=null;this.src='/images/fallback_ceara.png';" alt="" loading="lazy" />
+									) : (
+										<img width="720" height="360" src="/images/fallback_ceara.png" alt="Ceará Digital" loading="lazy" />
+									)}
 								<h4 class="title">{post.data.title}</h4>
 								<p class="date">
 									<FormattedDate date={post.data.pubDate} />
