@@ -1001,6 +1001,7 @@ if (commitAndPush) {
     'src/pages/tags/[tag].astro',
     ...changedArticleSet.map((file) => `src/content/blog/${file}`),
   ].filter(file => fs.existsSync(path.join(repo, file)));
+  changedFiles.push(...heroImages.filter(file => fs.existsSync(path.join(repo, file))));
   git(['add', ...changedFiles]);
   const staged = git(['diff', '--cached', '--name-only']);
   if (staged) {

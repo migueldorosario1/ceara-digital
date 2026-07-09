@@ -95,9 +95,9 @@ const posts = sortPostsWithSticky((await getCollection('blog')).filter((post) =>
 							<li class="news-item" style={index >= 20 ? 'display: none;' : ''}>
 								<a href={`/blog/${post.id}/`}>
 									{post.data.heroImage ? (
-										<img width="720" height="360" src={post.data.heroImage} onerror="this.onerror=null;this.src='/images/fallback_ceara.png';" alt="" loading={index >= 20 ? "lazy" : "eager"} />
+										<img width="720" height="360" src={post.data.heroImage} onerror="this.onerror=null; const f=['/images/fallback_ceara.png', '/images/ig_card_ceara.jpg']; this.src=f[Math.floor(Math.random()*f.length)];" alt="" loading={index >= 20 ? "lazy" : "eager"} />
 									) : (
-										<img width="720" height="360" src="/images/fallback_ceara.png" alt="Ceará Digital" loading={index >= 20 ? "lazy" : "eager"} />
+										<img width="720" height="360" src="/images/fallback_ceara.png" onerror="this.onerror=null; const f=['/images/fallback_ceara.png', '/images/ig_card_ceara.jpg']; this.src=f[Math.floor(Math.random()*f.length)];" alt="Ceará Digital" loading={index >= 20 ? "lazy" : "eager"} />
 									)}
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">

@@ -2,35 +2,35 @@
   "rewrites": [
     {
       "source": "/admin",
-      "destination": "http://159.89.185.209:5000/admin"
+      "destination": "http://159.89.185.209:5001/admin"
     },
     {
       "source": "/login",
-      "destination": "http://159.89.185.209:5000/login"
+      "destination": "http://159.89.185.209:5001/login"
     },
     {
       "source": "/logout",
-      "destination": "http://159.89.185.209:5000/logout"
+      "destination": "http://159.89.185.209:5001/logout"
     },
     {
       "source": "/drafts",
-      "destination": "http://159.89.185.209:5000/drafts"
+      "destination": "http://159.89.185.209:5001/drafts"
     },
     {
       "source": "/edit/:slug*",
-      "destination": "http://159.89.185.209:5000/edit/:slug*"
+      "destination": "http://159.89.185.209:5001/edit/:slug*"
     },
     {
       "source": "/upload_image",
-      "destination": "http://159.89.185.209:5000/upload_image"
+      "destination": "http://159.89.185.209:5001/upload_image"
     },
     {
       "source": "/posts",
-      "destination": "http://159.89.185.209:5000/posts"
+      "destination": "http://159.89.185.209:5001/posts"
     },
     {
       "source": "/delete/:slug*",
-      "destination": "http://159.89.185.209:5000/delete/:slug*"
+      "destination": "http://159.89.185.209:5001/delete/:slug*"
     }
   ]
 }
