@@ -4,7 +4,7 @@ description: "Governo altera certidão de filho de Zuzu Angel e vítimas da dita
 pubDate: "2026-07-01T08:25:08Z"
 draft: false
 tags: ["ceara", "ditadura", "certidoes-de-obito", "zuzu-angel", "direitos-humanos", "zona-sul", "sao-conrado", "cultura-carnaval"]
-heroImage: "/hero/smoke-202607010823-governo-altera-certidao-de-filho-de-zuzu-angel-e-vitimas-da-ditadura.jpg"
+heroImage: "/hero/smoke-202606292248-ex-governador-claudio-castro-vira-alvo-de-megaoperacao-da-policia-federal-nessa-sexta-15.jpg"
 ---
 O Ministério dos Direitos Humanos e da Cidadania entregou nesta terça-feira (30 de junho de 2026) certidões de óbito retificadas para familiares de vítimas da ditadura militar brasileira. Entre os contemplados está Stuart Edgar Angel Jones, filho da estilista Zuzu Angel, cuja morte ocorreu em 1971 sob tortura no DOI-CODI do Rio de Janeiro.
 

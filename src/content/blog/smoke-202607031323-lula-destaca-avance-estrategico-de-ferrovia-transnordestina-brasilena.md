@@ -4,7 +4,7 @@ description: "Durante una ceremonia realizada en el municipio cearense de Missã
 pubDate: "2026-07-03T13:24:11Z"
 draft: false
 tags: ["ceara", "infraestrutura", "logistica", "economia", "emprego", "grandes-infraestruturas", "regiao-metropolitana", "transporte-mobilidade", "politica-ce"]
-heroImage: "/hero/smoke-202607031323-lula-destaca-avance-estrategico-de-ferrovia-transnordestina-brasilena.jpg"
+heroImage: "/hero/smoke-202607012323-a-disputa-pelo-comando-da-direita-para-enfrentar-lula.jpeg"
 ---
 Durante una ceremonia realizada en el municipio cearense de Missão Velha, el mandatario puso en funcionamiento un nuevo segmento de la vía férrea y reafirmó el compromiso de su administración con la conclusión de una de las mayores obras de infraestructura logística del nordeste del país. Lula afirmó que la Transnordestina representa una inversión estratégica para integrar la región, generar empleo y fortalecer la competitividad de la economía brasileña, al facilitar el transporte de mercancías desde el interior hacia los puertos de exportación.
 

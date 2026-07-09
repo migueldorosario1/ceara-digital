@@ -4,7 +4,7 @@ description: "247 – A Polícia Federal deflagrou nesta sexta-feira (3) a Opera
 pubDate: "2026-07-03T13:25:40Z"
 draft: false
 tags: ["ceara", "policia-federal", "emendas-pix", "corrupcao", "roraima", "stf", "politica", "seguranca-publica", "saude"]
-heroImage: "/hero/smoke-202607031323-pf-mira-emendas-pix-em-operacao-contra-desvios-em-roraima.jpg"
+heroImage: "/hero/smoke-202606292252-petrobras-abre-150-vagas-em-programa-de-estagio-veja-como-participar.jpg"
 ---
 247 – A Polícia Federal deflagrou nesta sexta-feira (3) a Operação Acesso Negado para investigar suspeitas de irregularidades na aplicação de emendas Pix destinadas aos municípios de Iracema e São Luiz do Anauá, em Roraima. A ação mira possíveis desvios de recursos públicos federais repassados por meio de emendas parlamentares individuais na modalidade transferência especial, segundo informações divulgadas pela Polícia Federal.
 

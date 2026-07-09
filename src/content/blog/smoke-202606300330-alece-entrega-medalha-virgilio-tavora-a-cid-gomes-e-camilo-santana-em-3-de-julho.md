@@ -4,7 +4,7 @@ description: "Em reconhecimento às contribuições para o desenvolvimento do Ce
 pubDate: "2026-06-30T03:30:35Z"
 draft: false
 tags: ["rio-de-janeiro", "ceara", "alece", "politica", "cid-gomes", "camilo-santana", "politica-ce", "estado", "regiao-metropolitana", "leme", "complexo", "saude", "educacao"]
-heroImage: "/hero/smoke-202606300330-alece-entrega-medalha-virgilio-tavora-a-cid-gomes-e-camilo-santana-em-3-de-julho.png"
+heroImage: "/hero/smoke-202606292302-alece-entrega-medalha-virgilio-tavora-a-cid-gomes-e-camilo-santana-em-3-de-julho.png"
 ---
 A Assembleia Legislativa do Ceará (Alece) entrega, no dia 3 de julho, às 18h, no Plenário 13 de Maio, a Medalha Virgílio Távora aos senadores Cid Gomes e Camilo Santana. A solenidade foi proposta pelo presidente da Casa, deputado Romeu Aldigueri (PSB), e subscrita por 25 parlamentares.
 

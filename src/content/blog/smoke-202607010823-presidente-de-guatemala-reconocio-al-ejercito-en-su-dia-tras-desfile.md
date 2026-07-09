@@ -4,7 +4,7 @@ description: "Al término de acto conmemorativo por el 155 aniversario del triun
 pubDate: "2026-07-01T08:26:47Z"
 draft: false
 tags: ["ceara", "guatemala", "exercito", "arevalo", "desfile", "geopolitica", "ramos", "comunidade", "seguranca-publica", "saude"]
-heroImage: "/hero/smoke-202607010823-presidente-de-guatemala-reconocio-al-ejercito-en-su-dia-tras-desfile-qwen.jpg"
+heroImage: "/hero/smoke-202607071758-centro-fashion-fortaleza-tera-funcionamento-especial-aos-domingos-durante-o-mes-de-julho.jpeg"
 ---
 Al término de acto conmemorativo por el 155 aniversario del triunfo de la Revolución Liberal, el mandatario subrayó que se trata de una institución que está siendo calificada de ejemplo a nivel nacional e internacional. La fortaleza de nuestro Ejército no se mide únicamente por su presencia y proyección territorial, sino por la calidad de sus capacidades, por la disciplina de sus miembros y el compromiso con la patria a la que sirve, remarcó el jefe de Estado.
 

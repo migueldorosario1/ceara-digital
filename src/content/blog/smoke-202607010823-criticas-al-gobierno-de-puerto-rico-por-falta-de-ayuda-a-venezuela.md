@@ -4,7 +4,7 @@ description: "La situación ha hecho crisis luego que la gobernante puertorrique
 pubDate: "2026-07-01T08:24:48Z"
 draft: false
 tags: ["ceara", "venezuela", "porto-rico", "sancoes", "ajuda-humanitaria", "eua", "geopolitica", "ramos", "transporte-mobilidade"]
-heroImage: "/hero/smoke-202607010823-criticas-al-gobierno-de-puerto-rico-por-falta-de-ayuda-a-venezuela-qwen.jpg"
+heroImage: "/hero/smoke-202606292248-menina-de-12-anos-denuncia-estupro-coletivo-por-8-adolescentes-na-zona-oeste-do-rio-de-janeiro.jpg"
 ---
 La situación ha hecho crisis luego que la gobernante puertorriqueña Jenniffer González anunciara que esperaba que el Comando Sur del Ejército estadounidense la autorizara a enviar expertos en socorro y medicamentos. Actualmente hay siete respondedores de la Guardia Nacional de Puerto Rico autorizados a estar en Venezuela y otros 20 militares en espera de órdenes federales para responder si son requeridos, según el secretario de Asuntos Públicos de La Fortaleza, Jean Peña Payano.
 

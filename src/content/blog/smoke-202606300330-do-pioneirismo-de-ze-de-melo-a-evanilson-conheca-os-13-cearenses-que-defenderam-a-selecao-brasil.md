@@ -4,7 +4,7 @@ description: "O Ceará segue revelando talentos para o futebol brasileiro e, ao 
 pubDate: "2026-06-30T03:31:17Z"
 draft: false
 tags: ["rio-de-janeiro", "fortaleza", "ceara", "futebol", "selecao-brasileira", "regiao-metropolitana", "estado", "leme", "anil", "transporte-mobilidade"]
-heroImage: "/hero/smoke-202606300330-do-pioneirismo-de-ze-de-melo-a-evanilson-conheca-os-13-cearenses-que-defenderam-a-selecao-brasil.jpg"
+heroImage: "/hero/smoke-202607071758-cagece-avanca-em-obra-de-novo-sistema-de-abastecimento-que-beneficiara-mais-de-158-mil-habitante.jpg"
 ---
 O Ceará segue revelando talentos para o futebol brasileiro e, ao longo da história, 13 jogadores nascidos no estado tiveram a oportunidade de vestir a camisa da Seleção Brasileira principal. O nome mais recente dessa lista é o do atacante Evanilson, natural de Fortaleza, convocado pelo técnico Dorival Júnior em 2024 para disputar a Copa América.
 

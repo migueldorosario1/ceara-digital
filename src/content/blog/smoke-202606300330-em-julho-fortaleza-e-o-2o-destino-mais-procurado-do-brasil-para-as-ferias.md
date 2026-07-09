@@ -4,7 +4,7 @@ description: "Fortaleza conquistou a segunda posição entre os destinos domést
 pubDate: "2026-06-30T03:30:21Z"
 draft: false
 tags: ["rio-de-janeiro", "ceara", "fortaleza", "turismo", "estado", "regiao-metropolitana", "transporte-mobilidade", "saude", "cultura-carnaval", "politica-ce"]
-heroImage: "/hero/smoke-202606300330-em-julho-fortaleza-e-o-2o-destino-mais-procurado-do-brasil-para-as-ferias.jpg"
+heroImage: "/hero/smoke-202606292302-em-julho-fortaleza-e-o-2o-destino-mais-procurado-do-brasil-para-as-ferias.jpg"
 ---
 Fortaleza conquistou a segunda posição entre os destinos domésticos mais procurados pelos brasileiros para as férias de julho de 2026, segundo levantamento da plataforma KAYAK. Esse resultado reforça a força do Ceará no cenário turístico nacional e evidencia o papel estratégico da capital como principal porta de entrada para quem escolhe o estado como destino de viagem.
 

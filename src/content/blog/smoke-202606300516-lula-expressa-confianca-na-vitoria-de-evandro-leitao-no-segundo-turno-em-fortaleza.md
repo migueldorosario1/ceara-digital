@@ -4,7 +4,7 @@ description: "Lula expressa confiança na vitória de Evandro Leitão no segundo
 pubDate: "2026-06-30T05:17:34Z"
 draft: false
 tags: ["ceara"]
-heroImage: "/hero/smoke-202606300516-lula-expressa-confianca-na-vitoria-de-evandro-leitao-no-segundo-turno-em-fortaleza-qwen.jpg"
+heroImage: "/hero/smoke-202606301703-fortaleza-inaugura-nova-avenida-em-julho-de-2026-qwen.jpg"
 ---
 O presidente Luiz Inácio Lula da Silva demonstrou confiança pública na vitória do candidato Evandro Leitão no segundo turno das eleições municipais de Fortaleza. Ele fez essa declaração durante um evento político realizado na capital cearense na última sexta-feira.
 

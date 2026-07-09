@@ -4,7 +4,7 @@ description: "A Companhia de Água e Esgoto do Ceará (Cagece) segue avançando 
 pubDate: "2026-07-03T21:23:21Z"
 draft: false
 tags: ["ceara", "regiao-metropolitana-de-fortaleza", "horizonte", "pacajus", "chorozinho", "abastecimento-de-agua", "cagece", "regiao-metropolitana", "estado", "caju", "problemas-estruturais", "transporte-mobilidade", "politica-ce"]
-heroImage: "/hero/smoke-202607032123-cagece-avanca-em-obra-de-novo-sistema-de-abastecimento-que-beneficiara-mais-de-158-mil-habitante.jpg"
+heroImage: "/hero/smoke-202607071758-cagece-avanca-em-obra-de-novo-sistema-de-abastecimento-que-beneficiara-mais-de-158-mil-habitante.jpg"
 ---
 A Companhia de Água e Esgoto do Ceará (Cagece) segue avançando na implantação do novo sistema integrado de abastecimento de água que atenderá os municípios de Horizonte, Pacajus e Chorozinho, além dos distritos de Queimadas e Triângulo. Com 95% de execução concluída e em fase de operação assistida, a obra representa um importante reforço para a segurança hídrica da região, beneficiando inicialmente cerca de 159 mil habitantes.
 
