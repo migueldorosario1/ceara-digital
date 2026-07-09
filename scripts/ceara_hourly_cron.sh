@@ -26,7 +26,7 @@ fi
 {
   printf '\n[%s] Ceará Digital hourly publish start\n' "$(date -Is)"
   "$CEARA_PYTHON" scripts/ceara_zelador_destaques.py
-  "$CEARA_PYTHON" "/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/ceara_smoke_markdown.py" 15 --queue
+  "$CEARA_PYTHON" "/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/cicero_smoke_markdown.py" 15 --queue
   "$CEARA_NPM" run ceara:publish-hourly
   printf '[%s] Ceará Digital hourly publish done\n' "$(date -Is)"
 } >> logs/ceara_hourly_cron.log 2>&1
