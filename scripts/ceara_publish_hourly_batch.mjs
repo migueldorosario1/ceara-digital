@@ -809,11 +809,53 @@ async function auditAndFix(file, publish) {
     ];
     const cearaTags = cearaKeywords.map(kw => kw.replace(/\s+/g, '-'));
     const hasCearaTag = tagsList.some(t => cearaTags.includes(t.toLowerCase()) || t.toLowerCase().includes('ceara') || t.toLowerCase().includes('ceará') || t.toLowerCase().includes('fortaleza'));
-    if (!hasCearaTag) {
-      warnings.push('categoria territorial fraca (falta tag do Ceara)');
+    
+    const textToLower = `${title} ${description} ${body}`.toLowerCase();
+    const hasCearaKeywords = cearaKeywords.some((kw) => textToLower.includes(kw));
+
+    const paragraphs = body.split(/\n+/).map(p => p.trim()).filter(Boolean);
+    const firstTwoParagraphs = paragraphs.slice(0, 2).join(' ');
+    const titleAndIntro = `${title} ${description} ${firstTwoParagraphs}`.toLowerCase();
+
+    let cearaMentionsCount = 0;
+    for (const kw of cearaKeywords) {
+      const regex = new RegExp(`\\b${kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
+      const matches = textToLower.match(regex);
+      if (matches) {
+        cearaMentionsCount += matches.length;
+      }
+    }
+    const hasCearaInTitleOrIntro = cearaKeywords.some(kw => titleAndIntro.includes(kw));
+    const passedGeographicValidation = hasCearaTag && hasCearaKeywords && (hasCearaInTitleOrIntro || cearaMentionsCount > 1);
+
+    let isGeopolitical = false;
+    if (
+      tagsList.includes('russia') ||
+      tagsList.includes('ucrania') ||
+      tagsList.includes('china') ||
+      tagsList.includes('venezuela') ||
+      tagsList.includes('guatemala') ||
+      tagsList.includes('puerto-rico') ||
+      tagsList.includes('geopolitica') ||
+      tagsList.includes('internacional') ||
+      tagsList.includes('bahia') ||
+      tagsList.includes('roraima') ||
+      title.toLowerCase().includes('ditadura') ||
+      title.toLowerCase().includes('titanic') ||
+      title.toLowerCase().includes('voepass') ||
+      (tagsList.includes('nacional') && !tagsList.some(t => ['ceara', 'ceará', 'fortaleza', 'sobral', 'elmano-de-freitas', 'ciro-gomes', 'cariri'].includes(t.toLowerCase())))
+    ) {
+      isGeopolitical = true;
+    }
+
+    if (isGeopolitical) {
+      warnings.push('categoria territorial nao permitida (geopolitica/nacional sem vinculo local)');
+    } else if (!passedGeographicValidation) {
+      warnings.push('categoria territorial fraca (falta tag do Ceara, mencao no titulo/intro ou mencoes recorrentes)');
     }
   } else {
-    if (!tags.includes('rio-de-janeiro') && !tags.includes('niteroi') && !tags.includes('baixada-cearense')) {
+    const tagsList = parseTags(frontmatter);
+    if (!tagsList.includes('rio-de-janeiro') && !tagsList.includes('niteroi') && !tagsList.includes('baixada-cearense')) {
       warnings.push('categoria territorial fraca');
     }
   }
