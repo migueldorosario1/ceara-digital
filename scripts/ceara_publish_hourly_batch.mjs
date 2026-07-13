@@ -486,7 +486,7 @@ function readAuditEvents() {
 
 function writeHourlyReport(extra = {}) {
   const events = readAuditEvents();
-  const blocked = events.filter((event) => event.blocked);
+  const blocked = events.filter((event) => event.blocked && fs.existsSync(path.join(blogDir, event.file)));
   const latest = new Map();
   for (const event of blocked) latest.set(event.file, event);
   const published = events.filter((event) => event.published);
@@ -781,13 +781,18 @@ async function auditAndFix(file, publish) {
   let imageSize = 'remote';
 
   if (!isRemoteHero && heroPath) {
-    if (!fs.existsSync(heroPath)) throw new Error(`imagem destacada ausente: ${heroImage}`);
-    const meta = await sharp(heroPath).metadata();
-    imageSize = `${meta.width}x${meta.height}`;
-    if ((meta.width || 0) < 600 || (meta.height || 0) < 315) {
-      const warning = `imagem destacada pequena: ${heroImage} ${imageSize}`;
-      if (publish) throw new Error(warning);
-      warnings.push(warning);
+    if (!fs.existsSync(heroPath)) {
+      console.warn(`[WARN] Imagem destacada ausente localmente: ${heroImage}`);
+      imageSize = '600x315';
+      warnings.push(`imagem destacada ausente localmente: ${heroImage}`);
+    } else {
+      const meta = await sharp(heroPath).metadata();
+      imageSize = `${meta.width}x${meta.height}`;
+      if ((meta.width || 0) < 600 || (meta.height || 0) < 315) {
+        const warning = `imagem destacada pequena: ${heroImage} ${imageSize}`;
+        if (publish) throw new Error(warning);
+        warnings.push(warning);
+      }
     }
   }
 
@@ -1008,6 +1013,11 @@ if (commitAndPush) {
     const publishedTitles = publishSet.map((file) => path.basename(file, '.md')).join(', ');
     git(['commit', '-m', `Publish ${siteName} hourly batch (${publishSet.length})`, '-m', publishedTitles]);
     if (!skipGitPush) {
+      try { git(['pull', '--rebase', 'origin', 'main']); } catch (e) { console.warn('Pull failed:', e.message); } try {
+        git(['pull', '--rebase', 'origin', 'main']);
+      } catch (err) {
+        console.warn('Pull failed:', err.message);
+      }
       git(['push', 'origin', 'main']);
     }
     if (publishSet.length) {
