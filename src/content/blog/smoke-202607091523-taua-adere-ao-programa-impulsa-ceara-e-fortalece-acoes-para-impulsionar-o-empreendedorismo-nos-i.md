@@ -2,7 +2,7 @@
 title: "Tauá adere ao programa Impulsa Ceará e fortalece ações para impulsionar o empreendedorismo nos Inhamuns"
 description: "A prefeita de Tauá, Patrícia Aguiar, recebeu nesta semana a Caravana Impulsa Ceará, iniciativa do Governo do Estado, por meio da Secretaria do Desenvolvimento Econômico (SDE), que"
 pubDate: "2026-07-09T15:24:07Z"
-draft: false
+draft: true
 tags: ["ceara", "taua", "inhamuns", "desenvolvimento-economico", "politica-ce", "estado", "regiao-metropolitana", "saude"]
 heroImage: "/hero/smoke-202607091523-taua-adere-ao-programa-impulsa-ceara-e-fortalece-acoes-para-impulsionar-o-empreendedorismo-nos-i.jpg"
 ---

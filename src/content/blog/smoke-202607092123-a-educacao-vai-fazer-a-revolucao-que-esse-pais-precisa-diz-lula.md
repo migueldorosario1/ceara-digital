@@ -2,7 +2,7 @@
 title: "“A educação vai fazer a revolução que esse país precisa”, diz Lula"
 description: "247 – O presidente Luiz Inácio Lula da Silva afirmou, nesta quinta-feira (2), em Juazeiro do Norte, no Ceará, que a educação será o principal caminho para transformar o Brasil em u"
 pubDate: "2026-07-09T21:24:05Z"
-draft: false
+draft: true
 tags: ["ceara", "educacao", "lula", "politica-social", "regiao-metropolitana", "transporte-mobilidade", "saude"]
 heroImage: "/hero/smoke-202607092123-a-educacao-vai-fazer-a-revolucao-que-esse-pais-precisa-diz-lula.jpg"
 ---

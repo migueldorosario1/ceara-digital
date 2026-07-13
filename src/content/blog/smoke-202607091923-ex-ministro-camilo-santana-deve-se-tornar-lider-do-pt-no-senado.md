@@ -2,7 +2,7 @@
 title: "Ex-ministro Camilo Santana deve se tornar líder do PT no Senado"
 description: "Ex-ministro Camilo Santana deve se tornar líder do PT no Senado Bancada petista se prepara para fazer a troca interna. Camilo Santana deve assumir a liderança da bancada na próxima"
 pubDate: "2026-07-09T19:27:26Z"
-draft: false
+draft: true
 tags: ["ceara", "pt", "lideranca", "senado", "camilo-santana", "politica-nacional", "regiao-metropolitana", "seguranca-publica", "transporte-mobilidade", "saude", "educacao", "politica-ce"]
 heroImage: "/hero/smoke-202607091923-ex-ministro-camilo-santana-deve-se-tornar-lider-do-pt-no-senado.jpg"
 ---

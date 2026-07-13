@@ -2,7 +2,7 @@
 title: "Com ação integrada e tecnologia, Ceará registra redução de 52% nos roubos de celulares no primeiro semestre de 2026"
 description: "No primeiro semestre deste ano, o Ceará registrou redução de 52,4% nos roubos e de 16,5% nos furtos de celulares. Os números foram apresentados pelo governador Elmano de Freitas ne"
 pubDate: "2026-07-09T11:23:31Z"
-draft: false
+draft: true
 tags: ["ceara", "seguranca-publica", "tecnologia", "estado", "regiao-metropolitana", "sampaio", "transporte-mobilidade", "politica-ce"]
 heroImage: "/hero/smoke-202607091123-com-acao-integrada-e-tecnologia-ceara-registra-reducao-de-52-nos-roubos-de-celulares-no-primeiro.jpg"
 ---

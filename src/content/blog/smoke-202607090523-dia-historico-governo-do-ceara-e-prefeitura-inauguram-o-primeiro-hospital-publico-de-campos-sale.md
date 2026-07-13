@@ -2,7 +2,7 @@
 title: "“Dia histórico”: Governo do Ceará e Prefeitura inauguram o primeiro hospital público de Campos Sales"
 description: "Na mesma agenda, foram entregues 36km de pavimentação da CE-187 e o governador Elmano vistoriou obras do novo campus da Urca no município Dia de festa e muita alegria em Campos Sal"
 pubDate: "2026-07-09T05:23:34Z"
-draft: false
+draft: true
 tags: ["ceara", "campos-sales", "saude", "estado", "regiao-metropolitana", "urca", "mage", "campos", "transporte-mobilidade", "politica-ce"]
 heroImage: "/hero/smoke-202607090523-dia-historico-governo-do-ceara-e-prefeitura-inauguram-o-primeiro-hospital-publico-de-campos-sale.jpg"
 ---

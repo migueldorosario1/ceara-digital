@@ -2,7 +2,7 @@
 title: "Paim diz que Camilo Santana foi escolhido para liderar o PT no Senado"
 description: "Partido dos"
 pubDate: "2026-07-09T17:26:21Z"
-draft: false
+draft: true
 tags: ["ceara", "pt", "lideranca", "senado", "camilo-santana", "politica-nacional", "regiao-metropolitana", "educacao", "politica-ce"]
 heroImage: "/hero/smoke-202607091723-paim-diz-que-camilo-santana-foi-escolhido-para-liderar-o-pt-no-senado.jpg"
 ---

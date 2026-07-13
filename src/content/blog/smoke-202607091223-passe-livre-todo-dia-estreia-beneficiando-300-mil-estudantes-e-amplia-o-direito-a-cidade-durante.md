@@ -2,7 +2,7 @@
 title: "Passe Livre Todo Dia estreia beneficiando 300 mil estudantes e amplia o direito à cidade durante as férias"
 description: "O primeiro dia de funcionamento do Passe Livre Todo Dia já mudou a rotina de milhares de estudantes em Fortaleza. A partir desta quarta-feira (1º/07), alunos que possuem Carteira d"
 pubDate: "2026-07-09T12:23:29Z"
-draft: false
+draft: true
 tags: ["ceara", "fortaleza", "transporte", "educacao", "politica-ce", "estado", "colegio", "saude", "cultura-carnaval"]
 heroImage: "/hero/smoke-202607091223-passe-livre-todo-dia-estreia-beneficiando-300-mil-estudantes-e-amplia-o-direito-a-cidade-durante.jpeg"
 ---

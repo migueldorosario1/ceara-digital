@@ -2,7 +2,7 @@
 title: "Tauá reforça compromisso com a proteção e os direitos da pessoa idosa"
 description: "A Prefeitura de Tauá encerrou a programação do Junho Violeta com a realização do seminário “Tecendo Redes: Proteção, Cuidado e Direitos da Pessoa Idosa”, iniciativa que reuniu prof"
 pubDate: "2026-07-09T14:24:11Z"
-draft: false
+draft: true
 tags: ["ceara", "taua", "politica-ce", "estado", "regiao-metropolitana", "comunidade"]
 heroImage: "/hero/smoke-202607091423-taua-reforca-compromisso-com-a-protecao-e-os-direitos-da-pessoa-idosa.png"
 ---

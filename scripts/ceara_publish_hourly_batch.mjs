@@ -25,13 +25,16 @@ const pausePath = path.join(repo, 'tools', 'ceara_publish_paused.txt');
 const args = new Set(process.argv.slice(2));
 const envPath = (() => {
   for (const p of [
+    path.join(repo, '..', 'root', 'chaves_cicero.env'),
     path.join(repo, '..', 'root', 'chaves_ceara.env'),
+    path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'chaves_cicero.env'),
     path.join(repo, '..', '..', '..', 'Cicero Agentes', 'root', 'chaves_ceara.env'),
+    '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/chaves_cicero.env',
     '/home/migueldorosario/Downloads/Antigravity Google/Cicero Agentes/root/chaves_ceara.env'
   ]) {
     if (fs.existsSync(p)) return p;
   }
-  return path.join(repo, '..', 'root', 'chaves_ceara.env');
+  return path.join(repo, '..', 'root', 'chaves_cicero.env');
 })();
 const siteName = (repo.includes('ceara-digital') || repo.includes('cicero')) ? 'Ceara Digital' : 'Cícero';
 const forcedBatchSize = process.env.CEARA_BATCH_SIZE ? Number(process.env.CEARA_BATCH_SIZE) : null;
@@ -129,6 +132,12 @@ const ENGLISH_MARKERS = new Set([
   'hall', 'favela', 'favelas', 'rio', 'janeiro', 'olympic', 'women', 'memory'
 ]);
 
+const SPANISH_MARKERS = new Set([
+  'el', 'los', 'las', 'del', 'al', 'en', 'y', 'con', 'un', 'una', 'unos', 'unas',
+  'su', 'sus', 'pero', 'lo', 'fue', 'son', 'es', 'esto', 'gobierno', 'ejercito',
+  'ejército', 'ayuda', 'tras'
+]);
+
 function countMarkers(text, markers) {
   const tokens = String(text || '').toLowerCase().match(/[a-zA-ZÀ-ÿ]+/g) || [];
   return tokens.filter((token) => markers.has(token)).length;
@@ -144,8 +153,11 @@ function languageCheck(article) {
   const sample = `${article.title || ''}\n${article.description || ''}\n${String(article.body || '').slice(0, 2600)}`;
   const english = countMarkers(sample, ENGLISH_MARKERS);
   const portuguese = countMarkers(sample, PORTUGUESE_MARKERS) + portugueseAccentBonus(sample);
+  const spanish = countMarkers(sample, SPANISH_MARKERS);
   const titleEnglish = countMarkers(title, ENGLISH_MARKERS);
   const titlePortuguese = countMarkers(title, PORTUGUESE_MARKERS) + portugueseAccentBonus(title);
+  const titleSpanish = countMarkers(title, SPANISH_MARKERS);
+
   const titleLooksEnglish = titleEnglish >= 3 && titleEnglish > titlePortuguese + 1;
   const bodyLooksEnglish = english >= 14 && english > portuguese * 1.25;
 
@@ -155,6 +167,24 @@ function languageCheck(article) {
       reason: `materia em ingles/nao traduzida: marcadores_en=${english}, marcadores_pt=${portuguese}`,
     };
   }
+
+  const titleLooksSpanish = titleSpanish >= 2 && titleSpanish > titlePortuguese;
+  const bodyLooksSpanish = spanish >= 8 && spanish > portuguese * 0.15;
+
+  if (titleLooksSpanish || bodyLooksSpanish) {
+    return {
+      ok: false,
+      reason: `materia em espanhol/nao traduzida: marcadores_es=${spanish}, marcadores_pt=${portuguese}`,
+    };
+  }
+
+  if (portuguese < 3) {
+    return {
+      ok: false,
+      reason: `conteudo nao parece ser em portugues (marcadores_pt insignificantes: ${portuguese})`,
+    };
+  }
+
   return { ok: true };
 }
 function validatePadraoOuro(body) {
@@ -769,7 +799,16 @@ async function auditAndFix(file, publish) {
   const isCeara = repo.includes('ceara-digital') || repo.includes('cicero');
   if (isCeara) {
     const tagsList = parseTags(frontmatter);
-    const hasCearaTag = tagsList.some(t => ['ceara', 'ceará', 'fortaleza', 'sobral', 'elmano-de-freitas', 'ciro-gomes', 'cariri'].includes(t.toLowerCase()));
+    const cearaKeywords = [
+      'ceara', 'ceará', 'fortaleza', 'sobral', 'juazeiro', 'crato', 'caucaia', 'maracanaú',
+      'maracanau', 'iguatu', 'itapipoca', 'campos sales', 'tauá', 'taua', 'quixadá', 'quixada',
+      'pentecoste', 'elmano', 'camilo santana', 'cid gomes', 'evandro leitão', 'evandro leitao',
+      'cearense', 'barbalha', 'limoeiro do norte', 'russas', 'morada nova', 'aracati', 'quixeramobim',
+      'senador pompeu', 'canindé', 'caninde', 'maranguape', 'aquiraz', 'eusébio', 'eusebio',
+      'cascavel', 'pindoretama', 'pacatuba', 'horizonte', 'pacajus', 'itaitinga'
+    ];
+    const cearaTags = cearaKeywords.map(kw => kw.replace(/\s+/g, '-'));
+    const hasCearaTag = tagsList.some(t => cearaTags.includes(t.toLowerCase()) || t.toLowerCase().includes('ceara') || t.toLowerCase().includes('ceará') || t.toLowerCase().includes('fortaleza'));
     if (!hasCearaTag) {
       warnings.push('categoria territorial fraca (falta tag do Ceara)');
     }
