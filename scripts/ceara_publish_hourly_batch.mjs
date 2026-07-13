@@ -516,7 +516,7 @@ function readAuditEvents() {
 
 function writeHourlyReport(extra = {}) {
   const events = readAuditEvents();
-  const blocked = events.filter((event) => event.blocked && fs.existsSync(path.join(blogDir, event.file)));
+  const blocked = events.filter((event) => event.blocked && event.file && fs.existsSync(path.join(blogDir, event.file)));
   const latest = new Map();
   for (const event of blocked) latest.set(event.file, event);
   const published = events.filter((event) => event.published);
