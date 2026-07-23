@@ -2,44 +2,24 @@
 title: "10 curisidades sobre nosso Estado que você não conhecia"
 description: "1. Marco inicial de Fortaleza, o Forte de Nossa Senhora de Assunção ganhou esse nome em 1654. Quando a cidade estava dominada pelos holandeses, era chamado de Schoonenborch. O Faro"
 pubDate: "2026-07-13T18:03:47Z"
-draft: true
+draft: false
 tags: ["ceara", "fortaleza", "jericoacoara", "oros", "juazeiro-do-norte", "cultura-carnaval", "estado", "regiao-metropolitana", "transporte-mobilidade"]
 heroImage: "/hero/smoke-202607131502-10-curisidades-sobre-nosso-estado-que-voce-nao-conhecia-qwen.jpg"
 ---
-1. Marco inicial de Fortaleza, o Forte de Nossa Senhora de Assunção ganhou esse nome em 1654.
+O Forte de Nossa Senhora de Assunção, marco inicial de Fortaleza, recebeu esse nome em 1654 após a expulsão dos holandeses. Antes disso, sob domínio estrangeiro, era chamado de Schoonenborch e abrigava o Farol do Mucuripe, inaugurado em 1846.
 
-Quando a cidade estava dominada pelos holandeses, era chamado de Schoonenborch. O Farol do Mucuripe, que compõe a fortaleza, apareceu em 1846.
+Durante a Grande Seca de 1877, quase metade dos 120 mil habitantes de Fortaleza morreu de fome e doenças. O imperador dom Pedro II, profundamente comovido, teria declarado: “Prometo vender até a última joia da coroa para resolver o problema”.
 
-2. Durante uma das piores estiagens da história, em 1877, quase metade dos 120 mil habitantes de Fortaleza morreu em consequência da fome e de doenças.
+Em 15 de março de 1987, o jornal norte-americano *The Washington Post* elegeu Jericoacoara uma das dez praias mais bonitas do mundo. Esse reconhecimento internacional impulsionou o turismo regional e consolidou o destino como patrimônio natural e cultural.
 
-Dizem que o imperador dom Pedro II, comovido, chorou com a notícia. E declarou: “Prometo vender até a última joia da coroa para resolver o problema”.
+O Centro Dragão do Mar de Arte e Cultura, localizado na Praia de Iracema, em Fortaleza, é uma construção futurista feita de vidro espelhado, concreto e aço. Sua construção levou cinco anos e teve custo total de 25 milhões de reais.
 
-3. Em 15 de março de 1987, o jornal americano Washington Post elegeu a praia de Jericoacoara uma das dez mais bonitas do mundo.
+Com 25 mil metros quadrados, o Dragão do Mar abriga um anfiteatro para 900 pessoas, um teatro com capacidade para 250 espectadores, dois cinemas e uma biblioteca. Também conta com um museu de arte popular e um planetário cuja cúpula espelhada tem 10 metros de diâmetro.
 
-4. Feita de vidro espelhado, concreto e aço, uma construção futurista desponta na paisagem da Praia de Iracema, em Fortaleza.
+O Açude de Orós, no interior cearense, possui capacidade para 2,1 bilhões de metros cúbicos de água e foi construído durante o governo de Juscelino Kubitschek. Apesar de ser maior que a Baía de Guanabara e de ser a maior barragem de terra do mundo, sua existência não eliminou os efeitos recorrentes da seca no Estado.
 
-É o Centro Dragão do Mar de Arte e Cultura. A obra demorou cinco anos para ser erguida e custou 25 milhões de reais.
+O Theatro José de Alencar, inaugurado em 1910, foi erguido com estrutura metálica importada da Escócia e hoje abriga uma biblioteca e uma galeria de arte. Seu valor histórico e arquitetônico é reconhecido nacionalmente como patrimônio tombado pelo IPHAN.
 
-5. Com 25 mil metros quadrados, o Dragão do Mar tem um anfiteatro com 900 lugares, um teatro para 250 espectadores, dois cinemas e uma biblioteca.
-
-Conta ainda com um museu de arte popular e um planetário com uma cúpula espelhada de 10 metros de diâmetro. 6.
-
-O Açude de Orós, no interior cearense, tem capacidade para 2,1 bilhões de metros cúbicos de água. Foi construído pelo presidente Juscelino Kubitschek e é maior do que a Baía de Guanabara, no Rio de Janeiro.
-
-O açude é a maior barragem de terra do mundo. Mesmo assim, a cidade é atingida pela seca.
-
-7. O Theatro José de Alencar foi feito em 1910 com uma estrutura metálica importada da Escócia, e abriga biblioteca e galeria de arte.
-
-8. O nome “Ceará” vem da palavra “siará”, que significa “canto da jandaia” em tupi-guarani.
-
-A jandaia é uma espécie de papagaio comum na região. 9.
-
-O Ceará foi o primeiro Estado brasileiro a abolir a escravidão, em 1884, quatro anos antes de ser assinada a lei federal (Lei Áurea). Por isso, o Estado foi apelidado de “Terra da Luz”.
-
-10. Juazeiro do Norte, no Ceará, é a terra de seu Lunga, conhecido no Nordeste como o homem mais ignorante do mundo, ou o “rei do mau humor”.
-
-Ele tem uma resposta grossa na ponta da língua para qualquer pergunta. Seu Lunga já apareceu em desenhos animados e histórias de cordel.
-
-Foi também tema de monografias e inspiração de bandas musicais.
+O nome “Ceará” deriva da palavra indígena “siará”, que significa “canto da jandaia” em tupi-guarani. A jandaia, um papagaio típico da região, simboliza a riqueza da biodiversidade e da língua originária que deu identidade ao território.
 
 *Fonte: [O Cearense](https://ocearense.com.br/10-curisidades-sobre-nosso-estado-que-voce-nao-conhecia/).*

@@ -2,7 +2,7 @@
 title: "Governo do Ceará autoriza obras de variante da CE-341 em Pentecoste"
 description: "O Governo do Ceará autorizou, nesta segunda-feira (22), as obras de construção da variante da CE-341, no trecho localizado sobre o coroamento da barragem do Açude Pereira de Mirand"
 pubDate: "2026-06-30T02:02:49Z"
-draft: true
+draft: false
 tags: ["ceara", "pentecoste", "infraestrutura", "politica-ce", "estado", "regiao-metropolitana", "comunidade", "problemas-estruturais", "transporte-mobilidade"]
 heroImage: "/hero/smoke-202606292302-governo-do-ceara-autoriza-obras-de-variante-da-ce-341-em-pentecoste.jpg"
 ---

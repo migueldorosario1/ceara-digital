@@ -2,7 +2,7 @@
 title: "Centro Fashion Fortaleza terá funcionamento especial aos domingos durante o mês de julho"
 description: "Empreendimento abrirá nos domingos de férias, das 9h às 16h, ampliando as oportunidades para clientes, turistas e empreendedores do maior centro de compras de moda popular do Norte"
 pubDate: "2026-07-13T18:02:45Z"
-draft: true
+draft: false
 tags: ["ceara", "fortaleza", "cearense", "centro-fashion", "norte-noroeste-cearense", "estado", "jacare", "transporte-mobilidade"]
 heroImage: "/hero/smoke-202607131502-centro-fashion-fortaleza-tera-funcionamento-especial-aos-domingos-durante-o-mes-de-julho.jpeg"
 ---
